@@ -1,0 +1,230 @@
+
+		$nomc = $_POST['nom'];
+		$prenomc = $_POST['prenom'];
+		$numtelc = $_POST['numtel'];
+		$adressec = $_POST['adresse'];
+		$emailc = $_POST['email'];
+		$passwordc = md5($_POST['mdp']);
+		$cpasswordc = md5($_POST['cmdp']);
+
+
+
+	$_SESSION['email'] = $row['email'];
+	if ($password == $cpassword) {
+		$sql = "SELECT * FROM users WHERE email='$email'";
+		$result = mysqli_query($conn, $sql);
+		if (!$result->num_rows > 0) {
+			$sql = "INSERT INTO users (username, email, tel, adresse, password)
+					VALUES ('$username', '$email','$tel','$adresse','$password')";
+			$result = mysqli_query($conn, $sql);
+			if ($result) {
+				echo "<script>alert('done')</script>";
+				$username = "";
+				$email = "";
+				$tel = "";
+				$adresse = "";
+				$_POST['password'] = "";
+				$_POST['cpassword'] = "";
+			} else {
+				echo "<script>alert('Woops! Something Wrong Went.')</script>";
+			}
+		} else {
+			echo "<script>alert('Woops! Email Already Exists.')</script>";
+		}
+		
+	} else {
+		echo "<script>alert('Password Not Matched.')</script>";
+	}
+}
+
+
+
+
+$sql3 = "SELECT * FROM accetpedfinal where idclient='$idc' and idprest='$idp'";
+$result3 = mysqli_query($conn, $sql3);
+$rows3=$result3->fetch_assoc();
+
+
+
+<?php 
+
+include '../login-auth/config.php';
+
+error_reporting(0);
+
+session_start();
+
+$idp=$_SESSION['idp'];
+$idc=$_SESSION['idc'];
+
+$sql = "SELECT * FROM prestateur where idp='$idp'";
+$result = mysqli_query($conn, $sql);
+$rows=$result->fetch_assoc();
+
+$prix=$rows['prix'];
+
+
+
+
+
+if(isset($_POST['submit'])){
+
+
+  $prix=$_POST['prix'];
+  $dated=$_POST['dated'];
+  $datef=$_POST['datef'];
+  $heure=$_POST['heure'];
+  $total=$_POST['total'];
+
+
+
+  $sql = "INSERT INTO pending(dated, datef,prix ,heure, totalttc, idclient, idprest) VALUES ('$dated','$datef','$prix','$heure','$total','$idc','$idp')";
+  $result = mysqli_query($conn, $sql);
+  
+  header("Location: ../bilan2/feed/index.html");
+
+
+
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="score-prest.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+    <title>Document</title>
+</head>
+<body>
+<div class="all-c">
+<div class="container">
+  <div class="grid-7 element-animation">
+    <!--card-1-->
+    <div class="card color-card">
+      <ul>
+        <li><a href="prest-dashboard.php"><i class="fas fa-arrow-left i-l w"></i></a></li>
+      </ul>
+  <form action="" method="post">        
+      <img src="../<?php echo $rows['source'];?>" alt="profile-pic" class="profile">
+      <h1 class="title"><?php echo  strtoupper($rows['nomp'])?> <?php echo strtoupper($rows['prenomp']);?></h1>
+      <p>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+        </p>
+
+<div>
+
+
+<section class="carousel" aria-label="Gallery">
+  <ol class="carousel__viewport">
+    <li id="carousel__slide1"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+        <a href="#carousel__slide4"
+           class="carousel__prev">Go to last slide</a>
+        <a href="#carousel__slide2"
+           class="carousel__next">Go to next slide</a>
+      </div>
+    </li>
+    <li id="carousel__slide2"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">bsahjsjhbajbhs</div>
+      <a href="#carousel__slide1"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide3"
+         class="carousel__next">Go to next slide</a>
+    </li>
+    <li id="carousel__slide3"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"></div>
+      <a href="#carousel__slide2"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide4"
+         class="carousel__next">Go to next slide</a>
+    </li>
+    <li id="carousel__slide4"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"></div>
+      <a href="#carousel__slide3"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide1"
+         class="carousel__next">Go to first slide</a>
+    </li>
+  </ol>
+  <aside class="carousel__navigation">
+    <ol class="carousel__navigation-list">
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide1"
+           class="carousel__navigation-button">Go to slide 1</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide2"
+           class="carousel__navigation-button">Go to slide 2</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide3"
+           class="carousel__navigation-button">Go to slide 3</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide4"
+           class="carousel__navigation-button">Go to slide 4</a>
+      </li>
+    </ol>
+  </aside>
+</section>
+</div>
+    
+      <hr>
+      <div class="container">
+        <div class="content">
+          <div class="grid-2">
+            <button class="color-b circule"> <i class="">EXP</i></button>
+            <h2 class="title">5</h2>
+            <p class="followers">Annee d'experience</p>
+          </div>
+          <div class="grid-2">
+            <button class="color-c circule"><i class="">NP</i></button>
+            <h2 class="title"><?php echo $rows['nbrprestp'];?></h2>
+            <p class="followers">Nombre de prestation</p>
+          </div>
+          <div class="grid-2">
+            <button class="color-d circule"><i class="">SCR</i></button>
+            <h2 class="title"><?php echo $rows['score'];?> PTS</h2>
+            <p class="followers">Score</p>
+          </div>
+          </form>        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!--card-2-->
+
+ 
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+<script src="bilan.js"></script>
+
+
+
+</body>
+</html>
+

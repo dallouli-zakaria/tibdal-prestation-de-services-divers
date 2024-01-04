@@ -1,0 +1,100 @@
+<?php
+include '../../login-auth/config.php';
+
+error_reporting(0);
+
+session_start();
+
+
+
+$sql = "SELECT * FROM prestateur where idp='$idp'";
+$result = mysqli_query($conn, $sql);
+$rows=$result->fetch_assoc();
+
+
+?>
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>TIBDAL</title>
+  </head>
+  <body>
+  
+
+  <div class="content">
+    
+    <div class="container">
+      <div class="row align-items-stretch no-gutters contact-wrap">
+        <div class="col-md-12">
+          <div class="form h-100">
+            <h3>DEMANDE ENVOYEÉ !</h3>
+            <form class="mb-5" method="post" id="contactForm" name="contactForm">
+              <div class="row">
+
+                <div class="col-md-6 form-group mb-3">
+                  
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Votre demande a bien été envoyé au prestataire!" readonly>
+                </div>
+              </div>
+
+              <div class="row">
+                
+                  
+                  <div class="col-md-6 form-group mb-3">
+                  
+                    <input type="text" class="form-control" name="name" id="name" placeholder="On reviendra vers vous dans les plus brefs délais!" readonly>
+                  </div>
+                
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 form-group mb-3">
+                  
+                  <textarea class="form-control" name="message" id="message" cols="30" rows="4"  placeholder="Merci d'avoir choisie TIBDAL :)" readonly></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <a href="../../logged1-services/s-services.php"><input type="button" value="Retour vers la page d'acceuil" class="btn btn-primary rounded-0 py-2 px-4"></a>
+                  <a href="../../demandes-client/demande-client.php"><input type="button" value="Voir mes demandes" class="btn btn-primary rounded-0 py-2 px-4"></a>
+                  
+                </div>
+              </div>
+            </form>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+    
+    
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
